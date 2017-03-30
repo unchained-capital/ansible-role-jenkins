@@ -2,7 +2,9 @@
 
 # Server will itself include client.yml
 - include: server.yml
+  tags: [jenkins]
   when: "{{ jenkins_server }}"
 
 - include: client.yml
+  tags: [jenkins]
   when: "{{ not jenkins_server }}"
