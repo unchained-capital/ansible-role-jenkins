@@ -2,9 +2,12 @@
 
 - name: Get the jenkins-cli jarfile from the Jenkins server.
   get_url:
-    url: "http://{{ jenkins_hostname }}:{{ jenkins_http_port }}{{ jenkins_url_prefix }}/jnlpJars/jenkins-cli.jar"
+    url: "{{ jenkins_api_url }}/jnlpJars/jenkins-cli.jar"
     dest: "{{ jenkins_jar_location }}"
   register: jarfile_get
   until: "'OK' in jarfile_get.msg or 'file already exists' in jarfile_get.msg"
   retries: 5
   delay: 10
+
+- name: Template out a jenkins-cli command
+  template: src="templates/jenkins-cli.j2" dest="/usr/local/bin/jenkins-cli" owner=root group=root mode=0755

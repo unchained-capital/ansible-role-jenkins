@@ -19,8 +19,10 @@ jenkins_home: /var/lib/jenkins
 jenkins_hostname: localhost
 jenkins_http_port: 8080
 jenkins_jar_location: /opt/jenkins-cli.jar
+jenkins_download_dir: /tmp
 jenkins_plugins: []
 jenkins_url_prefix: ""
+jenkins_api_url: "http://{{ jenkins_hostname }}:{{ jenkins_http_port }}{{ jenkins_url_prefix }}"
 jenkins_java_options: "-Djenkins.install.runSetupWizard=false"
 
 jenkins_admin_username: admin

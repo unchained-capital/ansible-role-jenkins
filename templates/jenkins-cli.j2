@@ -1,0 +1,4 @@
+#!/bin/bash
+
+export JENKINS_URL="{{ jenkins_api_url }}"
+exec java -jar "{{ jenkins_jar_location }}" $@
